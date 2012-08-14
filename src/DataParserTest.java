@@ -5,7 +5,8 @@ import static org.junit.Assert.assertEquals;
 
 public class DataParserTest {
 
-    private String inputWithTwo = "?Which of these animals is a mammal\n" +
+    private String inputWithTwo =
+            "?Which of these animals is a mammal\n" +
             "Ant\n" +
             "Bee\n" +
             "*Cat\n" +
@@ -13,7 +14,8 @@ public class DataParserTest {
             "2\n" +
             "*5\n" +
             "6\n";
-    private String inputWithThreeQuestions = "?Which of these animals is a mammal\n" +
+    private String inputWithThreeQuestions =
+            "?Which of these animals is a mammal\n" +
             "Ant\n" +
             "Bee\n" +
             "*Cat\n" +
@@ -71,7 +73,15 @@ public class DataParserTest {
         assertEquals("5" ,qs.get(1).PossibleAnswers().get(1));
     }
 
+    @Test
+    public void ThreeQuestionsAnswers(){
+        DataParser dr = new DataParser();
+        List<Question> qs = dr.parseText(inputWithThreeQuestions);
+        assertEquals ("Cat", qs.get(0).RightAnswer());
+        assertEquals ("5", qs.get(1).RightAnswer());
+        assertEquals ("6", qs.get(2).RightAnswer());
 
+    }
 
 
 
